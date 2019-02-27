@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A418F56722262A170027998D /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418F56622262A170027998D /* GameDetailViewController.m */; };
 		A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2422261B5C00297025 /* AppDelegate.m */; };
 		A4AA5C2822261B5C00297025 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2722261B5C00297025 /* ViewController.m */; };
 		A4AA5C2B22261B5C00297025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C2922261B5C00297025 /* Main.storyboard */; };
@@ -14,9 +15,12 @@
 		A4AA5C3022261B5D00297025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C2F22261B5D00297025 /* Assets.xcassets */; };
 		A4AA5C3322261B5D00297025 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C3122261B5D00297025 /* LaunchScreen.storyboard */; };
 		A4AA5C3622261B5D00297025 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C3522261B5D00297025 /* main.m */; };
+		A4AA5C3E222624C000297025 /* GameListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C3D222624C000297025 /* GameListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A418F56522262A170027998D /* GameDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameDetailViewController.h; sourceTree = "<group>"; };
+		A418F56622262A170027998D /* GameDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameDetailViewController.m; sourceTree = "<group>"; };
 		A4AA5C2022261B5C00297025 /* GTScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4AA5C2322261B5C00297025 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4AA5C2422261B5C00297025 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -28,6 +32,8 @@
 		A4AA5C3222261B5D00297025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4AA5C3422261B5D00297025 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4AA5C3522261B5D00297025 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4AA5C3C222624C000297025 /* GameListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameListViewController.h; sourceTree = "<group>"; };
+		A4AA5C3D222624C000297025 /* GameListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +66,15 @@
 		A4AA5C2222261B5C00297025 /* GTScore */ = {
 			isa = PBXGroup;
 			children = (
+				A418F56522262A170027998D /* GameDetailViewController.h */,
+				A418F56622262A170027998D /* GameDetailViewController.m */,
 				A4AA5C2322261B5C00297025 /* AppDelegate.h */,
 				A4AA5C2422261B5C00297025 /* AppDelegate.m */,
 				A4AA5C2622261B5C00297025 /* ViewController.h */,
 				A4AA5C2722261B5C00297025 /* ViewController.m */,
 				A4AA5C2922261B5C00297025 /* Main.storyboard */,
+				A4AA5C3C222624C000297025 /* GameListViewController.h */,
+				A4AA5C3D222624C000297025 /* GameListViewController.m */,
 				A4AA5C2F22261B5D00297025 /* Assets.xcassets */,
 				A4AA5C3122261B5D00297025 /* LaunchScreen.storyboard */,
 				A4AA5C3422261B5D00297025 /* Info.plist */,
@@ -144,8 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4AA5C3E222624C000297025 /* GameListViewController.m in Sources */,
 				A4AA5C2E22261B5C00297025 /* GTScore.xcdatamodeld in Sources */,
 				A4AA5C2822261B5C00297025 /* ViewController.m in Sources */,
+				A418F56722262A170027998D /* GameDetailViewController.m in Sources */,
 				A4AA5C3622261B5D00297025 /* main.m in Sources */,
 				A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */,
 			);
