@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *gameName;
 @property (weak, nonatomic) IBOutlet UILabel *player1Label;
 @property (weak, nonatomic) IBOutlet UILabel *player2Label;
+@property (weak, nonatomic) IBOutlet UITextField *score1Text;
+@property (weak, nonatomic) IBOutlet UITextField *score2Text;
 
 @end
 
