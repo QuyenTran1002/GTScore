@@ -141,7 +141,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VMG-Ud-bjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816.8" y="756.97151424287858"/>
+            <point key="canvasLocation" x="1510" y="886"/>
+        </scene>
+        <!--Friends List Scene-->
+        <scene sceneID="cZd-2i-xSW">
+            <objects>
+                <viewController title="Friends List Scene" id="y21-Qg-NUn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XSq-Yn-Md6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friends List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNe-sG-Nt1">
+                                <rect key="frame" x="7" y="123" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="31F-Ag-TE9"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Friends List" id="xYS-sq-0gQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gsX-NY-kDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2492" y="1113"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="mdH-r1-NZ2">
@@ -358,6 +383,7 @@
                         <segue destination="q0b-dO-8iG" kind="relationship" relationship="viewControllers" id="6lT-B6-pyX"/>
                         <segue destination="lQd-7W-G3s" kind="relationship" relationship="viewControllers" id="bf0-pu-Y4a"/>
                         <segue destination="TDH-ks-Ehl" kind="relationship" relationship="viewControllers" id="JWE-nV-ATx"/>
+                        <segue destination="y21-Qg-NUn" kind="relationship" relationship="viewControllers" id="yf3-96-z9J"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVr-5e-nZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
