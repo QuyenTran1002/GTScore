@@ -17,7 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.gameNameLabel.text = self.gameName;
-    // Do any additional setup after loading the view.
+    NSArray *array = [self.gameName componentsSeparatedByString:@" vs. "];
+    self.player1Label.text = array[0];
+    self.player2Label.text = array[1];
 }
 
 /*

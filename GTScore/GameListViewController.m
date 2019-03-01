@@ -20,7 +20,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableItems = [@[@"You vs Andrew", @"You vs John", @"You vs. Georgia State", @"You vs Buzz"] mutableCopy];
+    self.tableItems = [@[@"You vs. Andrew", @"You vs. John", @"You vs. Georgia State", @"You vs. Buzz"] mutableCopy];
     // Do any additional setup after loading the view.
 }
 
