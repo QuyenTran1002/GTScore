@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44613270C920FDF5AA3AB0A7 /* libPods-GTScore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3CA0EB2AA0EAE29FF51E8D /* libPods-GTScore.a */; };
+		4FCF70152229AD28000BF18F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FCF70142229AD28000BF18F /* GoogleService-Info.plist */; };
 		A418F56722262A170027998D /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418F56622262A170027998D /* GameDetailViewController.m */; };
 		A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2422261B5C00297025 /* AppDelegate.m */; };
 		A4AA5C2822261B5C00297025 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2722261B5C00297025 /* ViewController.m */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E3CA0EB2AA0EAE29FF51E8D /* libPods-GTScore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GTScore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FCF70142229AD28000BF18F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8B91E75E5EFF099B1022DE54 /* Pods-GTScore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTScore.release.xcconfig"; path = "Target Support Files/Pods-GTScore/Pods-GTScore.release.xcconfig"; sourceTree = "<group>"; };
 		A418F56522262A170027998D /* GameDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameDetailViewController.h; sourceTree = "<group>"; };
 		A418F56622262A170027998D /* GameDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameDetailViewController.m; sourceTree = "<group>"; };
 		A4AA5C2022261B5C00297025 /* GTScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,6 +39,7 @@
 		A4AA5C3522261B5D00297025 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A4AA5C3C222624C000297025 /* GameListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameListViewController.h; sourceTree = "<group>"; };
 		A4AA5C3D222624C000297025 /* GameListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameListViewController.m; sourceTree = "<group>"; };
+		D928A2399B520963D08CA0D5 /* Pods-GTScore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTScore.debug.xcconfig"; path = "Target Support Files/Pods-GTScore/Pods-GTScore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +47,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44613270C920FDF5AA3AB0A7 /* libPods-GTScore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		502D9D017A2A38377C5C5944 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E3CA0EB2AA0EAE29FF51E8D /* libPods-GTScore.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		51214A9077B7CC73D1902E71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D928A2399B520963D08CA0D5 /* Pods-GTScore.debug.xcconfig */,
+				8B91E75E5EFF099B1022DE54 /* Pods-GTScore.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A4AA5C1722261B5C00297025 = {
 			isa = PBXGroup;
 			children = (
 				A4AA5C2222261B5C00297025 /* GTScore */,
 				A4AA5C2122261B5C00297025 /* Products */,
+				51214A9077B7CC73D1902E71 /* Pods */,
+				502D9D017A2A38377C5C5944 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +107,7 @@
 				A4AA5C3422261B5D00297025 /* Info.plist */,
 				A4AA5C3522261B5D00297025 /* main.m */,
 				A4AA5C2C22261B5C00297025 /* GTScore.xcdatamodeld */,
+				4FCF70142229AD28000BF18F /* GoogleService-Info.plist */,
 			);
 			path = GTScore;
 			sourceTree = "<group>";
@@ -91,6 +119,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4AA5C3922261B5D00297025 /* Build configuration list for PBXNativeTarget "GTScore" */;
 			buildPhases = (
+				E5236A2ED62336F0572AB75B /* [CP] Check Pods Manifest.lock */,
 				A4AA5C1C22261B5C00297025 /* Sources */,
 				A4AA5C1D22261B5C00297025 /* Frameworks */,
 				A4AA5C1E22261B5C00297025 /* Resources */,
@@ -142,12 +171,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4AA5C3322261B5D00297025 /* LaunchScreen.storyboard in Resources */,
+				4FCF70152229AD28000BF18F /* GoogleService-Info.plist in Resources */,
 				A4AA5C3022261B5D00297025 /* Assets.xcassets in Resources */,
 				A4AA5C2B22261B5C00297025 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E5236A2ED62336F0572AB75B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GTScore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A4AA5C1C22261B5C00297025 /* Sources */ = {
@@ -299,6 +354,7 @@
 		};
 		A4AA5C3A22261B5D00297025 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D928A2399B520963D08CA0D5 /* Pods-GTScore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -315,6 +371,7 @@
 		};
 		A4AA5C3B22261B5D00297025 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B91E75E5EFF099B1022DE54 /* Pods-GTScore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
