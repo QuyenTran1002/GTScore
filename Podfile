@@ -8,5 +8,5 @@ target 'GTScore' do
   # Pods for GTScore
   
   pod 'Firebase/Core'
-
+  pod 'Firebase/Auth'
 end
