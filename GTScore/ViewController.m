@@ -22,7 +22,7 @@
 }
 
 - (IBAction)loginClicked:(id)sender {
-    if (([_usernameTextfield.text isEqualToString:@"demo"] && [_passwordTextfield.text isEqualToString:@"password"]) || ([_usernameTextfield.text isEqualToString:@"d"] && [_passwordTextfield.text isEqualToString:@"p"])) {
+    if (([_usernameTextfield.text isEqualToString:@"demo@gatech.edu"] && [_passwordTextfield.text isEqualToString:@"password"]) || ([_usernameTextfield.text isEqualToString:@"d"] && [_passwordTextfield.text isEqualToString:@"p"])) {
         [self performSegueWithIdentifier:@"LoginSucceed" sender:self];
     } else {
         UIAlertController *alertController = [[UIAlertController alloc] init];
