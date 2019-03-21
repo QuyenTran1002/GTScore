@@ -247,10 +247,10 @@
         <!--History View Controller-->
         <scene sceneID="mdH-r1-NZ2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gj4-EZ-1Fl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="TDH-ks-Ehl" userLabel="History View Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="history" id="fA7-jI-KZv"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gj4-EZ-1Fl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3445.5999999999999" y="1038.5307346326838"/>
         </scene>
@@ -279,7 +279,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGm-MX-mU9">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="47" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="Ac9-tx-pgy"/>
                                 </items>
@@ -292,7 +292,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6sB-E6-5DS">
-                                <rect key="frame" x="0.0" y="140" width="414" height="617"/>
+                                <rect key="frame" x="0.0" y="143" width="414" height="614"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameRowCell" id="iI5-Y4-bZj">
@@ -394,21 +394,29 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Fut-0f-BfW">
                                 <rect key="frame" x="42" y="352" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperScorePlayerAChanged:" destination="LlK-8l-oFo" eventType="valueChanged" id="OEX-y4-xx0"/>
+                                </connections>
                             </stepper>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="cKq-xm-nbg">
                                 <rect key="frame" x="238" y="352" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperScorePlayerBChanged:" destination="LlK-8l-oFo" eventType="valueChanged" id="h0l-q6-NI3"/>
+                                </connections>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cyZ-Bg-Mcy"/>
                     </view>
                     <connections>
-                        <outlet property="gameNameLabel" destination="YJn-wO-poO" id="9mq-nS-7MY"/>
-                        <outlet property="player1Label" destination="yX5-hf-DR4" id="aFZ-m5-z9G"/>
-                        <outlet property="player2Label" destination="Ut7-Fw-g4Q" id="s00-PW-8Z9"/>
-                        <outlet property="score1Text" destination="kNM-dg-8Tw" id="xRK-ej-XdG"/>
-                        <outlet property="score2Text" destination="Dho-K7-YT5" id="SQb-E5-gpb"/>
+                        <outlet property="gameNameLabel" destination="YJn-wO-poO" id="XMW-LY-Sxv"/>
+                        <outlet property="playerALabel" destination="yX5-hf-DR4" id="CmC-Ky-Wzf"/>
+                        <outlet property="playerAScore" destination="kNM-dg-8Tw" id="Hp5-Ud-8YD"/>
+                        <outlet property="playerAStepper" destination="Fut-0f-BfW" id="B8Q-ZZ-tL7"/>
+                        <outlet property="playerBLabel" destination="Ut7-Fw-g4Q" id="YvA-Fm-kG9"/>
+                        <outlet property="playerBScore" destination="Dho-K7-YT5" id="2LD-n0-uEJ"/>
+                        <outlet property="playerBStepper" destination="cKq-xm-nbg" id="VOl-ln-pYm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gn2-jw-HNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -442,7 +450,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EfW-Oz-kdV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="upr-gq-5K3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="99"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.02814424317" blue="0.76336453049999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="barTintColor" red="0.64318560882869924" green="0.85685865167790654" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

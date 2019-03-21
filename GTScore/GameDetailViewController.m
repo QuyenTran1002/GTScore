@@ -7,46 +7,86 @@
 //
 
 #import "GameDetailViewController.h"
+@import Firebase;
 
 @interface GameDetailViewController ()
-
+@property (weak, nonatomic) NSString *userID;
+@property (weak, nonatomic) NSDictionary<NSString *, NSString *> *matchScoreLine;
+@property (strong, nonatomic) FIRDatabaseReference *ref;
 @end
 
 @implementation GameDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.gameNameLabel.text = self.gameName;
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *resultLoad = [prefs stringForKey:self.gameName];
-    if (resultLoad != nil && [resultLoad length] != 0) {
-        NSArray *array = [resultLoad componentsSeparatedByString:@" vs. "];
-        self.score1Text.text = array[0];
-        self.score2Text.text = array[1];
-    }
-    NSArray *array = [self.gameName componentsSeparatedByString:@" vs. "];
-    self.player1Label.text = array[0];
-    self.player2Label.text = array[1];
+    _userID = [FIRAuth auth].currentUser.uid;
+    _matchScoreLine = self.data[@"Scores"];
+    NSArray<NSString *> *players = [_matchScoreLine allKeys];
+    NSString *playerA = players[0];
+    NSString *playerB = players[1];
+    self.playerALabel.text = playerA;
+    self.playerBLabel.text = playerB;
+    self.playerAScore.text = _matchScoreLine[playerA];
+    self.playerBScore.text = _matchScoreLine[playerB];
+    [self.playerAStepper setValue: [_matchScoreLine[playerA] doubleValue]];
+    [self.playerBStepper setValue:[_matchScoreLine[playerB] doubleValue]];
+    _ref = [[FIRDatabase database] reference];
 }
 
 - (IBAction)reportScore:(id)sender {
-    if ([self.score1Text.text length] == 0 || [self.score2Text.text length] == 0) {
+    if ([self.playerAScore.text length] == 0 || [self.playerBScore.text length] == 0) {
         UIAlertController *alertController = [[UIAlertController alloc] init];
         alertController.title = @"Error";
         alertController.message = @"Not input score to field";
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alertController animated:YES completion:nil];
     } else {
-        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-        NSMutableString *result = [@"" mutableCopy];
-        [result appendString:self.score1Text.text];
-        [result appendString:@" vs. "];
-        [result appendString:self.score2Text.text];
-        [prefs setObject:result forKey:self.gameName];
-        UINavigationController *navigationController = self.navigationController;
-        [navigationController popViewControllerAnimated:YES];
+        [_matchScoreLine setValue:self.playerAScore.text forKey:self.playerALabel.text];
+        [_matchScoreLine setValue:self.playerBScore.text forKey:self.playerBLabel.text];
+        [[[[[[self.ref child:@"Users"]child:_userID] child:@"Matches"] child:_data[@"Identifier"]] child:@"Scores"] setValue:_matchScoreLine withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+            if (error) {
+                NSLog(@"Data could not be saved: %@", error);
+                UIAlertController *alertController = [[UIAlertController alloc] init];
+                alertController.title = @"Error";
+                alertController.message = [error description];
+                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+                [self presentViewController:alertController animated:YES completion:nil];
+            } else {
+                NSLog(@"Data saved successfully.");
+                UINavigationController *navigationController = self.navigationController;
+                [navigationController popViewControllerAnimated:YES];
+            }
+        }];
+        if (_data[@"Other Player"] != nil && [_data[@"Other Player"] length] != 0) {
+            [[[[[[self.ref child:@"Users"]child:_data[@"Other Player"]] child:@"Matches"] child:_data[@"Identifier"]] child:@"Scores"] setValue:_matchScoreLine withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+                if (error) {
+                    NSLog(@"Data could not be saved: %@", error);
+                } else {
+                    NSLog(@"Data saved successfully.");
+                }
+            }];
+        }
     }
     
+}
+- (IBAction)stepperScorePlayerAChanged:(id)sender {
+    UIStepper *stepper = (UIStepper *)sender;
+    if (stepper.value < 0) {
+        stepper.value = 0;
+    }
+    NSInteger score = (NSInteger) stepper.value;
+    NSLog([NSString stringWithFormat:@"%d", score]);
+    _playerAScore.text = [NSString stringWithFormat:@"%d", score];
+}
+
+- (IBAction)stepperScorePlayerBChanged:(id)sender {
+    UIStepper *stepper = (UIStepper *)sender;
+    if (stepper.value < 0) {
+        stepper.value = 0;
+    }
+    NSInteger score = (NSInteger) stepper.value;
+    NSLog([NSString stringWithFormat:@"%d", score]);
+    _playerAScore.text = [NSString stringWithFormat:@"%d", score];
 }
 
 /*

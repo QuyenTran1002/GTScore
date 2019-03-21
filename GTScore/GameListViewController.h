@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@import Firebase;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GameListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface GameListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    FIRDatabaseHandle _refHandleAdded;
+    FIRDatabaseHandle _refHandleEdit;
+}
 @end
 
 NS_ASSUME_NONNULL_END
