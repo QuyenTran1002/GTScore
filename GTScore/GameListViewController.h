@@ -11,8 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GameListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    FIRDatabaseHandle _refHandleAdded;
-    FIRDatabaseHandle _refHandleEdit;
+    FIRDatabaseHandle _refHandleChanged;
 }
 @end
 
