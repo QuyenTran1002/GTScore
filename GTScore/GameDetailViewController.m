@@ -86,7 +86,7 @@
     }
     NSInteger score = (NSInteger) stepper.value;
     NSLog([NSString stringWithFormat:@"%d", score]);
-    _playerAScore.text = [NSString stringWithFormat:@"%d", score];
+    _playerBScore.text = [NSString stringWithFormat:@"%d", score];
 }
 
 /*
