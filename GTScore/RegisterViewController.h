@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RegisterViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *userEmail;
 @property (weak, nonatomic) IBOutlet UITextField *userPassword;
+@property (weak, nonatomic) IBOutlet UITextField *userName;
 
 @end
 

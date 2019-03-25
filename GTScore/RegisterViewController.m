@@ -10,13 +10,14 @@
 @import Firebase;
 
 @interface RegisterViewController ()
-
+@property (strong, nonatomic) FIRDatabaseReference *ref;
 @end
 
 @implementation RegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.ref = [[FIRDatabase database] reference];
     // Do any additional setup after loading the view.
 }
 
@@ -45,6 +46,8 @@
                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
                 [self presentViewController:alertController animated:YES completion:nil];
             } else {
+                NSDictionary *userInfo = @{@"Name" : _userName.text, @"email" : _userEmail.text};
+                [[[_ref child:@"Users"] child:authResult.user.uid] setValue:userInfo];
                 NSLog(@"%@ created", authResult.user.email);
                 [self.navigationController popViewControllerAnimated:YES];
             }
