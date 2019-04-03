@@ -17,6 +17,9 @@
 		A4AA5C3322261B5D00297025 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C3122261B5D00297025 /* LaunchScreen.storyboard */; };
 		A4AA5C3622261B5D00297025 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C3522261B5D00297025 /* main.m */; };
 		A4AA5C3E222624C000297025 /* GameListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C3D222624C000297025 /* GameListViewController.m */; };
+		A4B608442252872800D1E09D /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B608432252872800D1E09D /* ContactViewController.m */; };
+		A4B608472252879400D1E09D /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B608462252879400D1E09D /* HistoryViewController.m */; };
+		A4B6084A225287BF00D1E09D /* HistoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B60849225287BF00D1E09D /* HistoryDetailViewController.m */; };
 		A4BDD44A222D81BA00E487FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4BDD449222D81BA00E487FC /* GoogleService-Info.plist */; };
 		A4BDD44D222D9C2500E487FC /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BDD44C222D9C2500E487FC /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
@@ -39,6 +42,12 @@
 		A4AA5C3522261B5D00297025 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A4AA5C3C222624C000297025 /* GameListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameListViewController.h; sourceTree = "<group>"; };
 		A4AA5C3D222624C000297025 /* GameListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameListViewController.m; sourceTree = "<group>"; };
+		A4B608422252872800D1E09D /* ContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		A4B608432252872800D1E09D /* ContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		A4B608452252879400D1E09D /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		A4B608462252879400D1E09D /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		A4B60848225287BF00D1E09D /* HistoryDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryDetailViewController.h; sourceTree = "<group>"; };
+		A4B60849225287BF00D1E09D /* HistoryDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryDetailViewController.m; sourceTree = "<group>"; };
 		A4BDD449222D81BA00E487FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4BDD44B222D9C2500E487FC /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		A4BDD44C222D9C2500E487FC /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -112,6 +121,12 @@
 				A4AA5C2C22261B5C00297025 /* GTScore.xcdatamodeld */,
 				A4BDD44B222D9C2500E487FC /* RegisterViewController.h */,
 				A4BDD44C222D9C2500E487FC /* RegisterViewController.m */,
+				A4B608422252872800D1E09D /* ContactViewController.h */,
+				A4B608432252872800D1E09D /* ContactViewController.m */,
+				A4B608452252879400D1E09D /* HistoryViewController.h */,
+				A4B608462252879400D1E09D /* HistoryViewController.m */,
+				A4B60848225287BF00D1E09D /* HistoryDetailViewController.h */,
+				A4B60849225287BF00D1E09D /* HistoryDetailViewController.m */,
 			);
 			path = GTScore;
 			sourceTree = "<group>";
@@ -215,9 +230,12 @@
 			files = (
 				A4AA5C3E222624C000297025 /* GameListViewController.m in Sources */,
 				A4AA5C2E22261B5C00297025 /* GTScore.xcdatamodeld in Sources */,
+				A4B608472252879400D1E09D /* HistoryViewController.m in Sources */,
 				A4AA5C2822261B5C00297025 /* ViewController.m in Sources */,
+				A4B6084A225287BF00D1E09D /* HistoryDetailViewController.m in Sources */,
 				A418F56722262A170027998D /* GameDetailViewController.m in Sources */,
 				A4BDD44D222D9C2500E487FC /* RegisterViewController.m in Sources */,
+				A4B608442252872800D1E09D /* ContactViewController.m in Sources */,
 				A4AA5C3622261B5D00297025 /* main.m in Sources */,
 				A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */,
 			);

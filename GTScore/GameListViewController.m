@@ -16,6 +16,8 @@
 @property (weak, nonatomic) NSString *userID;
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @property (strong, nonatomic) NSMutableArray<NSDictionary *> *matches;
+@property (strong, nonatomic) NSMutableArray<NSDictionary *> *contacts;
+
 @end
 
 @implementation GameListViewController
@@ -26,6 +28,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.matches = [[NSMutableArray alloc] init];
+    self.contacts = [[NSMutableArray alloc] init];
     [self configureDatabase];
 }
 
@@ -40,6 +43,10 @@
         }
         [self.tableView reloadData];
     }];
+    [[[[_ref child:@"Users"] child:self.userID] child:@"Friends"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        [self.contacts removeAllObjects];
+    }];
+    
 }
 - (IBAction)addNewListItem:(id)sender {
     [self.tableItems addObject:[NSString stringWithFormat:@"You vs. %@", [NSDate date]]];

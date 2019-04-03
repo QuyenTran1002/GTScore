@@ -177,7 +177,7 @@
         <!--Contacts Scene-->
         <scene sceneID="cZd-2i-xSW">
             <objects>
-                <viewController title="Friends List Scene" modalPresentationStyle="currentContext" id="y21-Qg-NUn" userLabel="Contacts Scene" sceneMemberID="viewController">
+                <viewController title="Friends List Scene" modalPresentationStyle="currentContext" id="y21-Qg-NUn" userLabel="Contacts Scene" customClass="ContactViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XSq-Yn-Md6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,6 +204,9 @@
                                                     <rect key="frame" x="184" y="6" width="46" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="invite:" destination="y21-Qg-NUn" eventType="touchUpInside" id="qRX-mh-OXj"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -228,6 +231,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="maP-8R-EQb" id="QJg-TL-1ug"/>
+                        <outlet property="tableView" destination="NT7-m0-OVL" id="aSA-tG-n4G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gsX-NY-kDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,7 +249,7 @@
         <!--History View Controller-->
         <scene sceneID="mdH-r1-NZ2">
             <objects>
-                <viewController id="TDH-ks-Ehl" userLabel="History View Controller" sceneMemberID="viewController">
+                <viewController id="TDH-ks-Ehl" userLabel="History View Controller" customClass="HistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cVN-qN-K2f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -274,7 +278,7 @@
         <!--history detail-->
         <scene sceneID="Esc-eJ-nPh">
             <objects>
-                <viewController id="mRm-r1-Pzs" userLabel="history detail" sceneMemberID="viewController">
+                <viewController id="mRm-r1-Pzs" userLabel="history detail" customClass="HistoryDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q0u-qZ-qHF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -551,7 +555,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="profile" width="25" height="25"/>
-        <image name="tour" width="25" height="25"/>
+        <image name="profile" width="56.25" height="56.25"/>
+        <image name="tour" width="56.25" height="56.25"/>
     </resources>
 </document>
