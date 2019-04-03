@@ -37,11 +37,14 @@
     _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"Matches"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSLog(@"changed: %@", snapshot);
         [self.matches removeAllObjects];
-        NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
-        for (NSString *key in value) {
-            [self.matches addObject:value[key]];
+        if (snapshot != nil) {
+            NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
+            for (NSString *key in value) {
+                [self.matches addObject:value[key]];
+            }
+            [self.tableView reloadData];
         }
-        [self.tableView reloadData];
+        
     }];
     [[[[_ref child:@"Users"] child:self.userID] child:@"Friends"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         [self.contacts removeAllObjects];
