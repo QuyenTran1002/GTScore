@@ -183,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NT7-m0-OVL">
-                                <rect key="frame" x="0.0" y="143" width="414" height="626"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="629"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Q0O-8h-6Nm" style="IBUITableViewCellStyleDefault" id="4i3-w1-Ccr" customClass="ContactTableCell">
@@ -202,6 +202,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fUX-5E-L7v" kind="showDetail" id="dhu-3S-XC4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -218,11 +221,7 @@
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="xYS-sq-0gQ"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Contacts" id="Dy1-dd-G13">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fh4-W6-3OW">
-                            <connections>
-                                <segue destination="fUX-5E-L7v" kind="showDetail" id="wFz-rz-Cz1"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fh4-W6-3OW"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -280,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cn-Li-U29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2753.6231884057975" y="1293.75"/>
+            <point key="canvasLocation" x="2745" y="1100"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="mdH-r1-NZ2">
@@ -559,7 +558,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="profile" width="56.25" height="56.25"/>
-        <image name="tour" width="56.25" height="56.25"/>
+        <image name="profile" width="25" height="25"/>
+        <image name="tour" width="25" height="25"/>
     </resources>
 </document>
