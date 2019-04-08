@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HistoryDetailViewController : UIViewController
+@property (nonatomic, strong) NSDictionary<NSString *, NSString *> *data;
 
 @end
 

@@ -8,11 +8,12 @@
 
 #import "GameDetailViewController.h"
 @import Firebase;
+#import <CommonCrypto/CommonHMAC.h>
 
 @interface GameDetailViewController ()
 @property (weak, nonatomic) NSString *userID;
-@property (weak, nonatomic) NSDictionary<NSString *, NSString *> *matchScoreLine;
 @property (strong, nonatomic) FIRDatabaseReference *ref;
+@property (weak, nonatomic) IBOutlet UITextField *gameNameField;
 @end
 
 @implementation GameDetailViewController
@@ -20,16 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _userID = [FIRAuth auth].currentUser.uid;
-    _matchScoreLine = self.data[@"Scores"];
-    NSArray<NSString *> *players = [_matchScoreLine allKeys];
-    NSString *playerA = players[0];
-    NSString *playerB = players[1];
-    self.playerALabel.text = playerA;
-    self.playerBLabel.text = playerB;
-    self.playerAScore.text = _matchScoreLine[playerA];
-    self.playerBScore.text = _matchScoreLine[playerB];
-    [self.playerAStepper setValue: [_matchScoreLine[playerA] doubleValue]];
-    [self.playerBStepper setValue:[_matchScoreLine[playerB] doubleValue]];
+    [self.playerAStepper setValue: 0];
+    [self.playerBStepper setValue:0];
     _ref = [[FIRDatabase database] reference];
 }
 
@@ -41,9 +34,11 @@
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alertController animated:YES completion:nil];
     } else {
-        [_matchScoreLine setValue:self.playerAScore.text forKey:self.playerALabel.text];
-        [_matchScoreLine setValue:self.playerBScore.text forKey:self.playerBLabel.text];
-        [[[[[[self.ref child:@"Users"]child:_userID] child:@"Matches"] child:_data[@"Identifier"]] child:@"Scores"] setValue:_matchScoreLine withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSMutableDictionary<NSString*, NSString*> *matchScoreLine = [[NSMutableDictionary alloc] init];
+        [matchScoreLine setValue:self.playerAScore.text forKey:self.playerALabel.text];
+        [matchScoreLine setValue:self.playerBScore.text forKey:self.playerBLabel.text];
+        NSString *identifier = [self sha256HashFor:self.gameNameField.text];
+        [[[[[self.ref child:@"Users"]child:_userID] child:@"Matches"] child:identifier] setValue:matchScoreLine withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
             if (error) {
                 NSLog(@"Data could not be saved: %@", error);
                 UIAlertController *alertController = [[UIAlertController alloc] init];
@@ -57,6 +52,7 @@
                 [navigationController popViewControllerAnimated:YES];
             }
         }];
+        /*
         if (_data[@"Other Player"] != nil && [_data[@"Other Player"] length] != 0) {
             [[[[[[self.ref child:@"Users"]child:_data[@"Other Player"]] child:@"Matches"] child:_data[@"Identifier"]] child:@"Scores"] setValue:_matchScoreLine withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
                 if (error) {
@@ -66,8 +62,23 @@
                 }
             }];
         }
+         */
     }
     
+}
+
+- (NSString*) sha256HashFor:(NSString*)input
+{
+    const char* str = [input UTF8String];
+    unsigned char result[CC_SHA256_DIGEST_LENGTH];
+    CC_SHA256(str, strlen(str), result);
+    
+    NSMutableString *ret = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH*2];
+    for(int i = 0; i<CC_SHA256_DIGEST_LENGTH; i++)
+    {
+        [ret appendFormat:@"%02x",result[i]];
+    }
+    return ret;
 }
 - (IBAction)stepperScorePlayerAChanged:(id)sender {
     UIStepper *stepper = (UIStepper *)sender;
@@ -99,4 +110,10 @@
 }
 */
 
+
+
+- (IBAction)gameField:(id)sender {
+}
+- (IBAction)nameGameField:(id)sender {
+}
 @end

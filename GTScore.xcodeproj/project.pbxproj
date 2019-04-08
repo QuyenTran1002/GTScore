@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		44613270C920FDF5AA3AB0A7 /* libPods-GTScore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3CA0EB2AA0EAE29FF51E8D /* libPods-GTScore.a */; };
 		A418F56722262A170027998D /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418F56622262A170027998D /* GameDetailViewController.m */; };
+		A478D3B1225AE8EF00FF2CDF /* ContactTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A478D3B0225AE8EF00FF2CDF /* ContactTableCell.m */; };
 		A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2422261B5C00297025 /* AppDelegate.m */; };
 		A4AA5C2822261B5C00297025 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2722261B5C00297025 /* ViewController.m */; };
 		A4AA5C2B22261B5C00297025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C2922261B5C00297025 /* Main.storyboard */; };
@@ -29,6 +30,8 @@
 		8B91E75E5EFF099B1022DE54 /* Pods-GTScore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTScore.release.xcconfig"; path = "Target Support Files/Pods-GTScore/Pods-GTScore.release.xcconfig"; sourceTree = "<group>"; };
 		A418F56522262A170027998D /* GameDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameDetailViewController.h; sourceTree = "<group>"; };
 		A418F56622262A170027998D /* GameDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameDetailViewController.m; sourceTree = "<group>"; };
+		A478D3AF225AE8EF00FF2CDF /* ContactTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactTableCell.h; sourceTree = "<group>"; };
+		A478D3B0225AE8EF00FF2CDF /* ContactTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactTableCell.m; sourceTree = "<group>"; };
 		A4AA5C2022261B5C00297025 /* GTScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4AA5C2322261B5C00297025 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4AA5C2422261B5C00297025 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				A4B608462252879400D1E09D /* HistoryViewController.m */,
 				A4B60848225287BF00D1E09D /* HistoryDetailViewController.h */,
 				A4B60849225287BF00D1E09D /* HistoryDetailViewController.m */,
+				A478D3AF225AE8EF00FF2CDF /* ContactTableCell.h */,
+				A478D3B0225AE8EF00FF2CDF /* ContactTableCell.m */,
 			);
 			path = GTScore;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				A4B6084A225287BF00D1E09D /* HistoryDetailViewController.m in Sources */,
 				A418F56722262A170027998D /* GameDetailViewController.m in Sources */,
 				A4BDD44D222D9C2500E487FC /* RegisterViewController.m in Sources */,
+				A478D3B1225AE8EF00FF2CDF /* ContactTableCell.m in Sources */,
 				A4B608442252872800D1E09D /* ContactViewController.m in Sources */,
 				A4AA5C3622261B5D00297025 /* main.m in Sources */,
 				A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */,

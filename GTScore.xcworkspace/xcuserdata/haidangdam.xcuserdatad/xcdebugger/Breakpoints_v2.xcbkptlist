@@ -429,23 +429,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
-            landmarkName = "-stepperScorePlayerAChanged:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GTScore/GameDetailViewController.m"
-            timestampString = "575948449.375317"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-sha256HashFor:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -461,7 +445,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
             endingLineNumber = "32"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-reportScore:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

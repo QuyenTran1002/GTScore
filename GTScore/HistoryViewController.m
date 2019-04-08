@@ -7,8 +7,18 @@
 //
 
 #import "HistoryViewController.h"
+#import "HistoryDetailViewController.h"
+
+
+@import Firebase;
 
 @interface HistoryViewController ()
+@property (strong, nonatomic) NSMutableArray<NSString *> *tableItems;
+@property (weak, nonatomic) NSString *userID;
+@property (strong, nonatomic) FIRDatabaseReference *ref;
+@property (strong, nonatomic) NSMutableArray<NSDictionary *> *matches;
+@property (strong, nonatomic) NSMutableArray<NSDictionary *> *contacts;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -16,17 +26,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.userID = [FIRAuth auth].currentUser.uid;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.matches = [[NSMutableArray alloc] init];
+    self.contacts = [[NSMutableArray alloc] init];
+    [self configureDatabase];
 }
 
-/*
-#pragma mark - Navigation
+- (void) configureDatabase {
+    _ref = [[FIRDatabase database] reference];
+    _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"Matches"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSLog(@"changed: %@", snapshot);
+        [self.matches removeAllObjects];
+        if (snapshot != nil) {
+            NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
+            for (NSString *key in value) {
+                [self.matches addObject:value[key]];
+            }
+            [self.tableView reloadData];
+        }
+        
+    }];
+    
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UITableViewCell *cell = sender;
+    NSInteger row = [self.tableView indexPathForCell:cell].row;
+    HistoryDetailViewController *detail = segue.destinationViewController;
+    NSDictionary<NSString *, NSString *> *match = self.matches[row];
+    detail.data = match;
 }
-*/
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameRowCell"];
+    NSDictionary<NSString *, NSString *> *match = self.matches[indexPath.row];
+    cell.textLabel.text = match[@"Name"];
+    return (UITableViewCell *)cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.matches.count;
+}
 
 @end

@@ -11,7 +11,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GameDetailViewController : UIViewController
-@property (nonatomic, strong) NSDictionary<NSString *, NSString *> *data;
 @property (weak, nonatomic) IBOutlet UILabel *gameNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerALabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerBLabel;

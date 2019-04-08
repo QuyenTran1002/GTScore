@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@import Firebase;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HistoryViewController : UIViewController
+@interface HistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    FIRDatabaseHandle _refHandleChanged;
+}
 
 @end
 

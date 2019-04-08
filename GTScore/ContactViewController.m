@@ -34,11 +34,13 @@
     _ref = [[FIRDatabase database] reference];
     _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"Friends"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         [self.contacts removeAllObjects];
-        NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
-        for (NSString *key in value) {
-            [self.contacts addObject:@{@"Identifier" : key, @"Name" : value[key][@"Name"]}];
+        if (snapshot != nil) {
+            NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
+            for (NSString *key in value) {
+                [self.contacts addObject:@{@"Identifier" : key, @"Name" : value[key][@"Name"]}];
+            }
+            [self.tableView reloadData];
         }
-        [self.tableView reloadData];
     }];
 }
 - (IBAction)invite:(id)sender {
