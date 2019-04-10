@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 @import Firebase;
 
 @interface ViewController ()
@@ -20,7 +22,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    // Optional: Place the button in the center of your view.
+    loginButton.center = self.view.center;
+    loginButton.delegate = self;
+    [self.view addSubview:loginButton];
+    if ([FBSDKAccessToken currentAccessToken]) {
+        [self performSegueWithIdentifier:@"LoginSucceed" sender:self];
+    }
     // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (IBAction)loginClicked:(id)sender {
@@ -57,6 +68,29 @@
         [self presentViewController:alertController animated:YES completion:nil];
     }
      */
+}
+
+- (void)loginButton:(FBSDKLoginButton *)loginButton
+didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
+              error:(NSError *)error {
+    if (error == nil) {
+        FIRAuthCredential *credential = [FIRFacebookAuthProvider
+                                         credentialWithAccessToken:[FBSDKAccessToken currentAccessToken].tokenString];
+        [[FIRAuth auth] signInAndRetrieveDataWithCredential:credential
+                                                 completion:^(FIRAuthDataResult * _Nullable authResult,
+                                                              NSError * _Nullable error) {
+                                                     if (error) {
+                                                         // ...
+                                                         return;
+                                                     }
+                                                     // User successfully signed in. Get user data from the FIRUser object
+                                                     if (authResult == nil) { return; }
+                                                     FIRUser *user = authResult.user;
+                                                     // ...
+                                                 }];
+    } else {
+        NSLog(error.localizedDescription);
+    }
 }
 
 

@@ -61,7 +61,6 @@
     NSInteger row = [self.tableView indexPathForCell:cell].row;
     GameDetailViewController *detail = segue.destinationViewController;
     NSDictionary<NSString *, NSString *> *match = self.matches[row];
-    detail.data = match;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
