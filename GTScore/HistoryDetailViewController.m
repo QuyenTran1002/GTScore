@@ -9,6 +9,11 @@
 #import "HistoryDetailViewController.h"
 
 @interface HistoryDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *player1Label;
+@property (weak, nonatomic) IBOutlet UITextField *player1Score;
+@property (weak, nonatomic) IBOutlet UILabel *gameNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *player2Label;
+@property (weak, nonatomic) IBOutlet UITextField *player2Score;
 
 @end
 
@@ -16,6 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _gameNameLabel.text = [NSString stringWithFormat:@"%@",[_data valueForKey:@"name"]];
+    _player1Label.text = [NSString stringWithFormat:@"%@",[_data valueForKey:@"player1Name"]];
+    _player2Label.text = [NSString stringWithFormat:@"%@",[_data valueForKey:@"player2Name"]];
+    _player1Score.text = [NSString stringWithFormat:@"%@",[_data valueForKey:@"score1"]];
+    _player2Score.text = [NSString stringWithFormat:@"%@",[_data valueForKey:@"score2"]];
     // Do any additional setup after loading the view.
 }
 

@@ -12,8 +12,12 @@
 
 @interface GameDetailViewController ()
 @property (weak, nonatomic) NSString *userID;
+@property (weak, nonatomic) NSString *friendID;
+@property (weak, nonatomic) IBOutlet UILabel *gameNameField;
 @property (strong, nonatomic) FIRDatabaseReference *ref;
-@property (weak, nonatomic) IBOutlet UITextField *gameNameField;
+@property (strong, nonatomic) NSMutableDictionary<NSString *, NSObject *> *match;
+@property (weak, nonatomic) IBOutlet UILabel *player1Name;
+@property (weak, nonatomic) IBOutlet UILabel *player2Name;
 @end
 
 @implementation GameDetailViewController
@@ -21,9 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _userID = [FIRAuth auth].currentUser.uid;
+    _ref = [[FIRDatabase database] reference];
     [self.playerAStepper setValue: 0];
     [self.playerBStepper setValue:0];
-    _ref = [[FIRDatabase database] reference];
+    [self configureDatabase];
 }
 
 - (IBAction)reportScore:(id)sender {
@@ -34,11 +39,16 @@
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alertController animated:YES completion:nil];
     } else {
-        NSMutableDictionary<NSString*, NSString*> *matchScoreLine = [[NSMutableDictionary alloc] init];
-        [matchScoreLine setValue:self.playerAScore.text forKey:self.playerALabel.text];
-        [matchScoreLine setValue:self.playerBScore.text forKey:self.playerBLabel.text];
-        NSString *identifier = [self sha256HashFor:self.gameNameField.text];
-        [[[[[self.ref child:@"Users"]child:_userID] child:@"Matches"] child:identifier] setValue:matchScoreLine withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSString *matchID = [NSString stringWithFormat:@"%@",[_match valueForKey:@"matchID"]];
+        [_match setValue:[NSNumber numberWithDouble:_playerAStepper.value] forKey:@"score1"];
+        [_match setValue:[NSNumber numberWithDouble:_playerBStepper.value] forKey:@"score2"];
+        [_match setValue:@true forKey:@"played"];
+        if ([[NSString stringWithFormat:@"%@",[_match valueForKey:@"player1ID"]] isEqualToString: _userID]) {
+            _friendID = [NSString stringWithFormat:@"%@",[_match valueForKey:@"player2ID"]];
+        } else {
+            _friendID = [NSString stringWithFormat:@"%@",[_match valueForKey:@"player1ID"]];
+        }
+        [[[[[self.ref child:@"Users"]child:_userID] child:@"games"] child:matchID] setValue:_match withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
             if (error) {
                 NSLog(@"Data could not be saved: %@", error);
                 UIAlertController *alertController = [[UIAlertController alloc] init];
@@ -47,40 +57,81 @@
                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
                 [self presentViewController:alertController animated:YES completion:nil];
             } else {
-                NSLog(@"Data saved successfully.");
-                UINavigationController *navigationController = self.navigationController;
-                [navigationController popViewControllerAnimated:YES];
+                NSLog(@"First Data saved successfully.");
+                
+                
             }
         }];
-        /*
-        if (_data[@"Other Player"] != nil && [_data[@"Other Player"] length] != 0) {
-            [[[[[[self.ref child:@"Users"]child:_data[@"Other Player"]] child:@"Matches"] child:_data[@"Identifier"]] child:@"Scores"] setValue:_matchScoreLine withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-                if (error) {
-                    NSLog(@"Data could not be saved: %@", error);
-                } else {
-                    NSLog(@"Data saved successfully.");
-                }
-            }];
-        }
-         */
+        [[[[[self.ref child:@"Users"]child:_userID] child:@"matches"] child:matchID] removeValue];
+        
+        [[[[[self.ref child:@"Users"]child:_friendID] child:@"games"] child:matchID] setValue:_match withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+            if (error) {
+                NSLog(@"Data could not be saved: %@", error);
+                UIAlertController *alertController = [[UIAlertController alloc] init];
+                alertController.title = @"Error";
+                alertController.message = [error description];
+                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+                [self presentViewController:alertController animated:YES completion:nil];
+            } else {
+                NSLog(@"Second Data saved successfully.");
+            }
+        }];
+        [[[[[self.ref child:@"Users"]child:_friendID] child:@"matches"] child:matchID] removeValue];
+        
     }
     
 }
 
-- (NSString*) sha256HashFor:(NSString*)input
-{
-    const char* str = [input UTF8String];
-    unsigned char result[CC_SHA256_DIGEST_LENGTH];
-    CC_SHA256(str, strlen(str), result);
+- (void) configureDatabase {
+    _ref = [[FIRDatabase database] reference];
     
-    NSMutableString *ret = [NSMutableString stringWithCapacity:CC_SHA256_DIGEST_LENGTH*2];
-    for(int i = 0; i<CC_SHA256_DIGEST_LENGTH; i++)
-    {
-        [ret appendFormat:@"%02x",result[i]];
-    }
-    return ret;
+    [[[[_ref child:@"Users"] child:self.userID] child:@"matches"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSLog(@"changed 1: %@", snapshot);
+        if (![snapshot.value isEqual:[NSNull null]]) {
+            NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
+            NSString *key = [value allKeys][0];
+            [self loadMatch:key];
+           
+        } else {
+            UIAlertController *alertController = [[UIAlertController alloc] init];
+            alertController.title = @"Error";
+            alertController.message = @"You have no ongoing match";
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }];
 }
-- (IBAction)stepperScorePlayerAChanged:(id)sender {
+
+- (void) loadMatch:(NSString *) key {
+    _ref = [[FIRDatabase database] reference];
+    [[[[[_ref child:@"Users"] child:self.userID] child:@"games"] child:key] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSLog(@"changed: %@", snapshot);
+        if (snapshot != nil) {
+            _match = snapshot.value;
+            [self loadMatchToComponent:_match];
+            
+        } else {
+            UIAlertController *alertController = [[UIAlertController alloc] init];
+            alertController.title = @"Error";
+            alertController.message = @"You have no ongoing match";
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }];
+}
+
+- (void) loadMatchToComponent:(NSDictionary *) dictionary {
+    _gameNameField.text = [NSString stringWithFormat:@"%@",[dictionary valueForKey:@"name"]];
+    _player1Name.text = [NSString stringWithFormat:@"%@",[dictionary valueForKey:@"player1Name"]];
+    _player2Name.text = [NSString stringWithFormat:@"%@",[dictionary valueForKey:@"player2Name"]];
+    [self.playerAStepper setValue: [(NSNumber*) [dictionary valueForKey:@"score1"] doubleValue]];
+    [self.playerBStepper setValue: [(NSNumber*) [dictionary valueForKey:@"score2"] doubleValue]];
+    _playerAScore.text = [NSString stringWithFormat:@"%d", 0];
+    _playerBScore.text = [NSString stringWithFormat:@"%d",0];
+    
+}
+
+- (IBAction)scorePlayerAChanged:(id)sender {
     UIStepper *stepper = (UIStepper *)sender;
     if (stepper.value < 0) {
         stepper.value = 0;
@@ -90,7 +141,7 @@
     _playerAScore.text = [NSString stringWithFormat:@"%d", score];
 }
 
-- (IBAction)stepperScorePlayerBChanged:(id)sender {
+- (IBAction)scorePlayerBChanged:(id)sender {
     UIStepper *stepper = (UIStepper *)sender;
     if (stepper.value < 0) {
         stepper.value = 0;
@@ -99,6 +150,8 @@
     NSLog([NSString stringWithFormat:@"%d", score]);
     _playerBScore.text = [NSString stringWithFormat:@"%d", score];
 }
+
+
 
 /*
 #pragma mark - Navigation

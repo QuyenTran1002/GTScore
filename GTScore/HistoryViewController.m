@@ -36,13 +36,17 @@
 
 - (void) configureDatabase {
     _ref = [[FIRDatabase database] reference];
-    _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"Matches"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        NSLog(@"changed: %@", snapshot);
+    _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"games"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSLog(@"History changed: %@", snapshot);
         [self.matches removeAllObjects];
         if (snapshot != nil) {
             NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
             for (NSString *key in value) {
-                [self.matches addObject:value[key]];
+                NSDictionary<NSString *, NSObject *> *game = value[key];
+                BOOL b = [game valueForKey:@"played"];
+                if (b) {
+                    [self.matches addObject:value[key]];
+                }
             }
             [self.tableView reloadData];
         }
@@ -55,14 +59,14 @@
     UITableViewCell *cell = sender;
     NSInteger row = [self.tableView indexPathForCell:cell].row;
     HistoryDetailViewController *detail = segue.destinationViewController;
-    NSDictionary<NSString *, NSString *> *match = self.matches[row];
+    NSDictionary<NSString *, NSObject *> *match = self.matches[row];
     detail.data = match;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameRowCell"];
-    NSDictionary<NSString *, NSString *> *match = self.matches[indexPath.row];
-    cell.textLabel.text = match[@"Name"];
+    NSDictionary<NSString *, NSObject *> *match = self.matches[indexPath.row];
+    cell.textLabel.text =[NSString stringWithFormat:@"%@", match[@"name"]];
     return (UITableViewCell *)cell;
 }
 
