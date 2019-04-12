@@ -749,7 +749,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.83091048799631984" green="1" blue="0.98748033836761617" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="barTintColor" red="0.81421219878702356" green="0.93256064423931806" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.1720682955" green="0.56247587349999995" blue="0.99193829300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.5742286861" green="0.75563545720000003" blue="0.8641390296" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="aRa-oK-0nY" kind="relationship" relationship="viewControllers" id="RuS-7w-mcC"/>
@@ -797,6 +798,6 @@
         <image name="ongoing_match" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K9Z-2a-cUf"/>
+        <segue reference="CpG-Mc-VIg"/>
     </inferredMetricsTieBreakers>
 </document>
