@@ -716,7 +716,6 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="scorePlayerBChanged:" destination="q0b-dO-8iG" eventType="valueChanged" id="0oW-Um-LJa"/>
-                                    <action selector="stepperScorePlayerBChanged:" destination="LlK-8l-oFo" eventType="valueChanged" id="MXg-F0-rq4"/>
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Game Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3J-2N-AvX">
@@ -817,50 +816,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTE-UU-6aa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5260.8695652173919" y="276.5625"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="QIR-CH-ejf">
-            <objects>
-                <tableViewController id="7r8-9u-oal" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zxe-Da-xdA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="rLf-ai-B40">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rLf-ai-B40" id="MqG-xk-1Us">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="7r8-9u-oal" id="a36-p6-am4"/>
-                            <outlet property="delegate" destination="7r8-9u-oal" id="Qol-ce-rjo"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bxG-BR-hjg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4462" y="-1063"/>
-        </scene>
-        <!--Scores-->
-        <scene sceneID="XiQ-Fw-pVR">
-            <objects>
-                <viewController id="LlK-8l-oFo" customClass="GameDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mFI-MY-uDo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="cyZ-Bg-Mcy"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Scores" id="ENT-97-RfI"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gn2-jw-HNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5164" y="-564"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Y9l-OE-3d2">
