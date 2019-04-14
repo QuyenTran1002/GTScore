@@ -1,23 +1,30 @@
 //
-//  ContactTableCell.m
+//  AddContactViewController.m
 //  GTScore
 //
-//  Created by Hai-Dang Dam on 4/7/19.
+//  Created by Hai-Dang Dam on 4/14/19.
 //  Copyright © 2019 Hai-Dang Dam. All rights reserved.
 //
 
-#import "ContactTableCell.h"
+#import "AddContactViewController.h"
 
-@interface ContactTableCell ()
+@interface AddContactViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
 @end
 
-@implementation ContactTableCell
+@implementation AddContactViewController
 
-
-- (IBAction)invite:(id)sender {
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
 }
 
+- (IBAction)addContact:(id)sender {
+}
+
+- (IBAction)cancel:(id)sender {
+}
 
 /*
 #pragma mark - Navigation

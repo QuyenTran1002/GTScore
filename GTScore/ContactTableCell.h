@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactTableCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIView *contactName;
+@property (weak, nonatomic) IBOutlet UILabel *title;
 
 @end
 

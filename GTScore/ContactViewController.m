@@ -7,6 +7,8 @@
 //
 
 #import "ContactViewController.h"
+#import "ContactTableCell.h"
+
 @import Firebase;
 
 @interface ContactViewController ()
@@ -33,12 +35,13 @@
 
 - (void) configureDatabase {
     _ref = [[FIRDatabase database] reference];
-    _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"Friends"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"friends"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         [self.contacts removeAllObjects];
         if (![snapshot.value isEqual:[NSNull null]]) {
+            NSLog(@"Contact changed: %@", snapshot);
             NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
             for (NSString *key in value) {
-                [self.contacts addObject:@{@"Identifier" : key, @"Name" : value[key][@"Name"]}];
+                [self.contacts addObject:value[key]];
             }
             [self.tableView reloadData];
         }
@@ -61,9 +64,10 @@
 */
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameRowCell"];
-    NSDictionary<NSString *, NSObject *> *match = self.contacts[indexPath.row];
-    cell.textLabel.text =[NSString stringWithFormat:@"%@", match[@"name"]];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UILabel *name = (UILabel *)[cell viewWithTag:100];
+    NSDictionary<NSString *, NSObject *> *contact = self.contacts[indexPath.row];
+    [name setText:[NSString stringWithFormat:@"%@", contact[@"name"]]];
     return (UITableViewCell *)cell;
 }
 

@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		44613270C920FDF5AA3AB0A7 /* libPods-GTScore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3CA0EB2AA0EAE29FF51E8D /* libPods-GTScore.a */; };
+		A415931A2263CD7300A320AA /* AddContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A41593192263CD7300A320AA /* AddContactViewController.m */; };
+		A415931D2263CE3500A320AA /* SendInvitationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A415931C2263CE3500A320AA /* SendInvitationViewController.m */; };
 		A418F56722262A170027998D /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418F56622262A170027998D /* GameDetailViewController.m */; };
 		A478D3B1225AE8EF00FF2CDF /* ContactTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A478D3B0225AE8EF00FF2CDF /* ContactTableCell.m */; };
 		A4850BC8225E14F400EEB3F7 /* CreateMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4850BC7225E14F400EEB3F7 /* CreateMatchViewController.m */; };
 		A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2422261B5C00297025 /* AppDelegate.m */; };
 		A4AA5C2822261B5C00297025 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2722261B5C00297025 /* ViewController.m */; };
-		A4AA5C2B22261B5C00297025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C2922261B5C00297025 /* Main.storyboard */; };
+		A4AA5C2B22261B5C00297025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C2922261B5C00297025 /* Main.storyboard */; settings = {ASSET_TAGS = (100, ); }; };
 		A4AA5C2E22261B5C00297025 /* GTScore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2C22261B5C00297025 /* GTScore.xcdatamodeld */; };
 		A4AA5C3022261B5D00297025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C2F22261B5D00297025 /* Assets.xcassets */; };
 		A4AA5C3322261B5D00297025 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C3122261B5D00297025 /* LaunchScreen.storyboard */; };
@@ -29,6 +31,10 @@
 /* Begin PBXFileReference section */
 		3E3CA0EB2AA0EAE29FF51E8D /* libPods-GTScore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GTScore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B91E75E5EFF099B1022DE54 /* Pods-GTScore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GTScore.release.xcconfig"; path = "Target Support Files/Pods-GTScore/Pods-GTScore.release.xcconfig"; sourceTree = "<group>"; };
+		A41593182263CD7300A320AA /* AddContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddContactViewController.h; sourceTree = "<group>"; };
+		A41593192263CD7300A320AA /* AddContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactViewController.m; sourceTree = "<group>"; };
+		A415931B2263CE3500A320AA /* SendInvitationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendInvitationViewController.h; sourceTree = "<group>"; };
+		A415931C2263CE3500A320AA /* SendInvitationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendInvitationViewController.m; sourceTree = "<group>"; };
 		A418F56522262A170027998D /* GameDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameDetailViewController.h; sourceTree = "<group>"; };
 		A418F56622262A170027998D /* GameDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameDetailViewController.m; sourceTree = "<group>"; };
 		A478D3AF225AE8EF00FF2CDF /* ContactTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactTableCell.h; sourceTree = "<group>"; };
@@ -137,6 +143,10 @@
 				A478D3B0225AE8EF00FF2CDF /* ContactTableCell.m */,
 				A4850BC6225E14F400EEB3F7 /* CreateMatchViewController.h */,
 				A4850BC7225E14F400EEB3F7 /* CreateMatchViewController.m */,
+				A41593182263CD7300A320AA /* AddContactViewController.h */,
+				A41593192263CD7300A320AA /* AddContactViewController.m */,
+				A415931B2263CE3500A320AA /* SendInvitationViewController.h */,
+				A415931C2263CE3500A320AA /* SendInvitationViewController.m */,
 			);
 			path = GTScore;
 			sourceTree = "<group>";
@@ -169,6 +179,9 @@
 		A4AA5C1822261B5C00297025 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					100,
+				);
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Hai-Dang Dam";
 				TargetAttributes = {
@@ -272,7 +285,9 @@
 				A4B608442252872800D1E09D /* ContactViewController.m in Sources */,
 				A4AA5C3622261B5D00297025 /* main.m in Sources */,
 				A4850BC8225E14F400EEB3F7 /* CreateMatchViewController.m in Sources */,
+				A415931D2263CE3500A320AA /* SendInvitationViewController.m in Sources */,
 				A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */,
+				A415931A2263CD7300A320AA /* AddContactViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

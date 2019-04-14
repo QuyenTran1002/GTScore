@@ -167,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="415.94202898550731" y="775.44642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact View Controller-->
         <scene sceneID="GsR-LL-eKO">
             <objects>
-                <viewController id="Jf7-9c-7kN" sceneMemberID="viewController">
+                <viewController id="Jf7-9c-7kN" customClass="ContactViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dPr-JC-myK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,11 +184,11 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="XGe-3U-6wx" style="IBUITableViewCellStyleDefault" id="nTZ-Li-eDI" customClass="ContactTableCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nTZ-Li-eDI" id="my4-hO-XR5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nTZ-Li-eDI" id="my4-hO-XR5">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XGe-3U-6wx">
+                                                <label opaque="NO" multipleTouchEnabled="YES" tag="100" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XGe-3U-6wx">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -203,6 +203,7 @@
                                                         <color key="titleColor" red="0.2477395305" green="0.23431495829999999" blue="0.072809450279999993" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="invite:" destination="nTZ-Li-eDI" eventType="touchUpInside" id="upn-pB-ipL"/>
                                                         <segue destination="fUX-5E-L7v" kind="push" id="uu0-eJ-OcV"/>
                                                     </connections>
                                                 </button>
@@ -210,6 +211,9 @@
                                             <color key="backgroundColor" red="0.38729196599999999" green="0.43800917969999997" blue="0.47473826139999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.45982377410000003" green="0.46406966420000001" blue="0.49690633649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="title" destination="XGe-3U-6wx" id="ony-sc-kwX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -237,15 +241,18 @@
                         <viewLayoutGuide key="safeArea" id="ERc-bw-eh1"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="D9H-kT-nPx"/>
+                    <connections>
+                        <outlet property="tableView" destination="k8T-5b-YLy" id="vi9-np-bGU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c32-ol-Bs7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1278" y="980"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Contact View Controller-->
         <scene sceneID="bf1-oO-2kH">
             <objects>
-                <viewController id="e3H-eM-OYw" sceneMemberID="viewController">
+                <viewController id="e3H-eM-OYw" customClass="AddContactViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MH2-z8-LZL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -265,6 +272,9 @@
                                 <state key="normal" title="ADD">
                                     <color key="titleColor" red="0.88139146450000005" green="0.88139146450000005" blue="0.88139146450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="addContact:" destination="e3H-eM-OYw" eventType="touchUpInside" id="Yb1-YK-gB3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2f-YH-2Ht">
                                 <rect key="frame" x="20" y="469" width="374" height="40"/>
@@ -274,12 +284,18 @@
                                 <state key="normal" title="CANCEL">
                                     <color key="titleColor" red="0.88139146450000005" green="0.88139146450000005" blue="0.88139146450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancel:" destination="e3H-eM-OYw" eventType="touchUpInside" id="GJE-ck-6Ev"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83836750770000001" green="0.89612341240000004" blue="0.89757275759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="GLy-w7-Wrr"/>
                     </view>
                     <navigationItem key="navigationItem" id="2an-bK-L5l"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="gOM-sP-ozl" id="b3I-8U-4Er"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQa-w2-0uj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,11 +384,12 @@
             </objects>
             <point key="canvasLocation" x="687" y="1978"/>
         </scene>
-        <!--View Controller-->
+        <!--Send Invitation View Controller-->
         <scene sceneID="5BS-sC-l1a">
             <objects>
-                <viewController id="fUX-5E-L7v" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WbK-L9-EQJ">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9cn-Li-U29" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="fUX-5E-L7v" customClass="SendInvitationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WbK-L9-EQJ" customClass="Send">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -383,19 +400,13 @@
                                 <state key="normal" title="SEND">
                                     <color key="titleColor" red="0.88139146450000005" green="0.88139146450000005" blue="0.88139146450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="send:" destination="fUX-5E-L7v" eventType="touchUpInside" id="Gvi-VY-sKZ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Game name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tMU-qY-RnL">
-                                <rect key="frame" x="20" y="258" width="374" height="34"/>
+                                <rect key="frame" x="20" y="194" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Information about the game" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-5c-k3I">
-                                <rect key="frame" x="20" y="339" width="374" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Moc-JH-tKs"/>
-                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -408,7 +419,19 @@
                                 <state key="normal" title="CANCEL">
                                     <color key="titleColor" red="0.88139146450000005" green="0.88139146450000005" blue="0.88139146450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancel:" destination="fUX-5E-L7v" eventType="touchUpInside" id="vv5-iy-AYu"/>
+                                </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Information about the game" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tvx-5c-k3I">
+                                <rect key="frame" x="20" y="319" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Moc-JH-tKs"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.83836750770000001" green="0.89612341240000004" blue="0.89757275759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -422,8 +445,11 @@
                         <viewLayoutGuide key="safeArea" id="9xb-rY-0mK"/>
                     </view>
                     <navigationItem key="navigationItem" id="soW-vO-vS7"/>
+                    <connections>
+                        <outlet property="gameName" destination="tMU-qY-RnL" id="Iou-MQ-89j"/>
+                        <outlet property="message" destination="Tvx-5c-k3I" id="rDx-Op-AOR"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9cn-Li-U29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2345" y="1454"/>
         </scene>
@@ -869,9 +895,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="create_match" width="25" height="25"/>
+        <image name="create_match" width="60" height="60"/>
         <image name="logo" width="536" height="536"/>
-        <image name="ongoing_match" width="25" height="25"/>
+        <image name="ongoing_match" width="56.25" height="56.25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CpG-Mc-VIg"/>
