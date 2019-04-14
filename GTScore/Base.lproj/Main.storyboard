@@ -228,6 +228,9 @@
                                 <state key="normal" title="ADD">
                                     <color key="titleColor" red="0.88139146450000005" green="0.88139146450000005" blue="0.88139146450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <segue destination="e3H-eM-OYw" kind="push" id="BOb-Vv-i9t"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83836750770000001" green="0.89612341240000004" blue="0.89757275759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -237,7 +240,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c32-ol-Bs7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540.5797101449277" y="755.35714285714278"/>
+            <point key="canvasLocation" x="1278" y="980"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bf1-oO-2kH">
+            <objects>
+                <viewController id="e3H-eM-OYw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MH2-z8-LZL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gOM-sP-ozl">
+                                <rect key="frame" x="20" y="233" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNj-3p-Vhe">
+                                <rect key="frame" x="20" y="384" width="374" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="ADD">
+                                    <color key="titleColor" red="0.88139146450000005" green="0.88139146450000005" blue="0.88139146450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2f-YH-2Ht">
+                                <rect key="frame" x="20" y="469" width="374" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" red="0.88139146450000005" green="0.88139146450000005" blue="0.88139146450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83836750770000001" green="0.89612341240000004" blue="0.89757275759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="GLy-w7-Wrr"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2an-bK-L5l"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jQa-w2-0uj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1461" y="1706"/>
         </scene>
         <!--Contacts Scene-->
         <scene sceneID="cZd-2i-xSW">
@@ -320,7 +366,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1290" y="1455"/>
+            <point key="canvasLocation" x="687" y="1978"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5BS-sC-l1a">
@@ -414,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gj4-EZ-1Fl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3445.5999999999999" y="1038.5307346326838"/>
+            <point key="canvasLocation" x="3362" y="1088"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zJj-2U-ZyT">
