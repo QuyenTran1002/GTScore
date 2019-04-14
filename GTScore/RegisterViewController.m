@@ -46,7 +46,7 @@
                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
                 [self presentViewController:alertController animated:YES completion:nil];
             } else {
-                NSDictionary *userInfo = @{@"Name" : _userName.text, @"email" : _userEmail.text};
+                NSDictionary *userInfo = @{@"name" : _userName.text, @"email" : _userEmail.text, @"uid" : authResult.user.uid};
                 [[[_ref child:@"Users"] child:authResult.user.uid] setValue:userInfo];
                 NSLog(@"%@ created", authResult.user.email);
                 [self.navigationController popViewControllerAnimated:YES];

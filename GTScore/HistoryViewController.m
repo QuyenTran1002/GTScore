@@ -39,7 +39,7 @@
     _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"games"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSLog(@"History changed: %@", snapshot);
         [self.matches removeAllObjects];
-        if (snapshot != nil) {
+        if (![snapshot.value isEqual:[NSNull null]]) {
             NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
             for (NSString *key in value) {
                 NSDictionary<NSString *, NSObject *> *game = value[key];

@@ -25,6 +25,7 @@
     // Do any additional setup after loading the view.
     self.userID = [FIRAuth auth].currentUser.uid;
     [self configureDatabase];
+    _contacts = [[NSMutableArray alloc] init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -34,7 +35,7 @@
     _ref = [[FIRDatabase database] reference];
     _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"Friends"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         [self.contacts removeAllObjects];
-        if (snapshot != nil) {
+        if (![snapshot.value isEqual:[NSNull null]]) {
             NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
             for (NSString *key in value) {
                 [self.contacts addObject:@{@"Identifier" : key, @"Name" : value[key][@"Name"]}];
@@ -59,4 +60,14 @@
 }
 */
 
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameRowCell"];
+    NSDictionary<NSString *, NSObject *> *match = self.contacts[indexPath.row];
+    cell.textLabel.text =[NSString stringWithFormat:@"%@", match[@"name"]];
+    return (UITableViewCell *)cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.contacts.count;
+}
 @end

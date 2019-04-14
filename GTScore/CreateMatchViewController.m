@@ -108,15 +108,14 @@
 - (void) configureDatabase {
     _ref = [[FIRDatabase database] reference];_refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"name"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSLog(@"changed: %@", snapshot);
-        [self.friendList removeAllObjects];
-        if (snapshot != nil) {
+        if (![snapshot.value isEqual:[NSNull null]]) {
             _username = snapshot.value;
         }
     }];
     _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"friends"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSLog(@"changed: %@", snapshot);
         [self.friendList removeAllObjects];
-        if (snapshot != nil) {
+        if (![snapshot.value isEqual:[NSNull null]]) {
             NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
             for (NSString *key in value) {
                 [self.friendList addObject:value[key]];
