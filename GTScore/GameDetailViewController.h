@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *playerAScore;
 @property (weak, nonatomic) IBOutlet UIStepper *playerAStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *playerBStepper;
-
++ (void) setHaveShown:(BOOL) value;
 @end
 
 NS_ASSUME_NONNULL_END

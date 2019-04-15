@@ -9,11 +9,12 @@
 #import "HistoryDetailViewController.h"
 
 @interface HistoryDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *gameNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *player1Label;
 @property (weak, nonatomic) IBOutlet UITextField *player1Score;
-@property (weak, nonatomic) IBOutlet UILabel *gameNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *player2Label;
 @property (weak, nonatomic) IBOutlet UITextField *player2Score;
+
 
 @end
 

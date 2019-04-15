@@ -1,5 +1,5 @@
 //
-//  AddContactViewController.h
+//  AddContactActionViewController.h
 //  GTScore
 //
 //  Created by Hai-Dang Dam on 4/14/19.
@@ -10,9 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddContactViewController :  UIViewController <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) NSMutableArray<NSString *> *currentContact;
+@interface AddContactActionViewController : UIViewController
+@property (nonatomic, strong) NSDictionary<NSString *, NSObject *> *data;
 @property (nonatomic, strong) NSString *name;
+
 @end
 
 NS_ASSUME_NONNULL_END

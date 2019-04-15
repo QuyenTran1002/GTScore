@@ -21,6 +21,11 @@
 @end
 
 @implementation GameDetailViewController
+static BOOL haveShown;
+
++ (void) setHaveShown:(BOOL) value {
+    haveShown = value;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,7 +82,7 @@
             }
         }];
         [[[[[self.ref child:@"Users"]child:_friendID] child:@"matches"] child:matchID] removeValue];
-        
+        haveShown = true;
     }
     
 }
@@ -93,11 +98,13 @@
             [self loadMatch:key];
            
         } else {
-            UIAlertController *alertController = [[UIAlertController alloc] init];
-            alertController.title = @"Error";
-            alertController.message = @"You have no ongoing match";
-            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
+            if (!haveShown) {
+                UIAlertController *alertController = [[UIAlertController alloc] init];
+                alertController.title = @"Error";
+                alertController.message = @"You have no ongoing match";
+                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+                [self presentViewController:alertController animated:YES completion:nil];
+            }
         }
     }];
 }
@@ -119,6 +126,7 @@
         }
     }];
 }
+
 
 - (void) loadMatchToComponent:(NSDictionary *) dictionary {
     _gameNameField.text = [NSString stringWithFormat:@"%@",[dictionary valueForKey:@"name"]];

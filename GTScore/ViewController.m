@@ -30,8 +30,16 @@
     if ([FBSDKAccessToken currentAccessToken]) {
         [self performSegueWithIdentifier:@"LoginSucceed" sender:self];
     }
+    [self.usernameTextfield setDelegate:self];
+    [self.passwordTextfield setDelegate:self];
     // Do any additional setup after loading the view, typically from a nib.
     
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (IBAction)loginClicked:(id)sender {

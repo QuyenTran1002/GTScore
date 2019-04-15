@@ -13,6 +13,7 @@
 		A418F56722262A170027998D /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A418F56622262A170027998D /* GameDetailViewController.m */; };
 		A478D3B1225AE8EF00FF2CDF /* ContactTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A478D3B0225AE8EF00FF2CDF /* ContactTableCell.m */; };
 		A4850BC8225E14F400EEB3F7 /* CreateMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4850BC7225E14F400EEB3F7 /* CreateMatchViewController.m */; };
+		A48AD07222643833000F2B6A /* AddContactActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A48AD07122643832000F2B6A /* AddContactActionViewController.m */; };
 		A4AA5C2522261B5C00297025 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2422261B5C00297025 /* AppDelegate.m */; };
 		A4AA5C2822261B5C00297025 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AA5C2722261B5C00297025 /* ViewController.m */; };
 		A4AA5C2B22261B5C00297025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4AA5C2922261B5C00297025 /* Main.storyboard */; settings = {ASSET_TAGS = (100, ); }; };
@@ -41,6 +42,8 @@
 		A478D3B0225AE8EF00FF2CDF /* ContactTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactTableCell.m; sourceTree = "<group>"; };
 		A4850BC6225E14F400EEB3F7 /* CreateMatchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateMatchViewController.h; sourceTree = "<group>"; };
 		A4850BC7225E14F400EEB3F7 /* CreateMatchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateMatchViewController.m; sourceTree = "<group>"; };
+		A48AD07022643832000F2B6A /* AddContactActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddContactActionViewController.h; sourceTree = "<group>"; };
+		A48AD07122643832000F2B6A /* AddContactActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactActionViewController.m; sourceTree = "<group>"; };
 		A4AA5C2022261B5C00297025 /* GTScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4AA5C2322261B5C00297025 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A4AA5C2422261B5C00297025 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				A41593192263CD7300A320AA /* AddContactViewController.m */,
 				A415931B2263CE3500A320AA /* SendInvitationViewController.h */,
 				A415931C2263CE3500A320AA /* SendInvitationViewController.m */,
+				A48AD07022643832000F2B6A /* AddContactActionViewController.h */,
+				A48AD07122643832000F2B6A /* AddContactActionViewController.m */,
 			);
 			path = GTScore;
 			sourceTree = "<group>";
@@ -276,6 +281,7 @@
 			files = (
 				A4AA5C3E222624C000297025 /* GameListViewController.m in Sources */,
 				A4AA5C2E22261B5C00297025 /* GTScore.xcdatamodeld in Sources */,
+				A48AD07222643833000F2B6A /* AddContactActionViewController.m in Sources */,
 				A4B608472252879400D1E09D /* HistoryViewController.m in Sources */,
 				A4AA5C2822261B5C00297025 /* ViewController.m in Sources */,
 				A4B6084A225287BF00D1E09D /* HistoryDetailViewController.m in Sources */,

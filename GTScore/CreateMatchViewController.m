@@ -9,6 +9,7 @@
 #import "CreateMatchViewController.h"
 @import Firebase;
 #import <CommonCrypto/CommonHMAC.h>
+#import "GameDetailViewController.h"
 
 @interface CreateMatchViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *gameName;
@@ -29,7 +30,15 @@
     self.dropdownListOpponent.delegate = self;
     self.dropdownListOpponent.dataSource = self;
     [self configureDatabase];
+    [self.gameName setDelegate:self];
+    [GameDetailViewController setHaveShown:FALSE];
     // Do any additional setup after loading the view.
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (IBAction)addMatch:(id)sender {
@@ -134,7 +143,7 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSDictionary<NSString*, NSString*> *opponent = self.friendList[component];
+    NSDictionary<NSString*, NSString*> *opponent = self.friendList[row];
     return opponent[@"name"];
 }
 

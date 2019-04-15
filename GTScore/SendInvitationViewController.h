@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SendInvitationViewController : UIViewController
-
+@property (nonatomic, strong) NSDictionary<NSString *, NSString *> *data;
+@property (nonatomic, strong) NSString *name;
 @end
 
 NS_ASSUME_NONNULL_END
