@@ -36,15 +36,15 @@
 
 - (void) configureDatabase {
     _ref = [[FIRDatabase database] reference];
-    _refHandleChanged = [[[[_ref child:@"Users"] child:self.userID] child:@"games"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[[[_ref child:@"Users"] child:self.userID] child:@"games"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSLog(@"History changed: %@", snapshot);
         [self.matches removeAllObjects];
         if (![snapshot.value isEqual:[NSNull null]]) {
             NSDictionary<NSString *, NSDictionary*> *value = snapshot.value;
             for (NSString *key in value) {
                 NSDictionary<NSString *, NSObject *> *game = value[key];
-                BOOL b = [game valueForKey:@"played"];
-                if (b) {
+                NSNumber* a = [game valueForKey:@"played"];
+                if ([a integerValue] == 1) {
                     [self.matches addObject:value[key]];
                 }
             }

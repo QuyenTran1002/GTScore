@@ -44,34 +44,11 @@
 - (IBAction)addMatch:(id)sender {
     NSString *identifier = [self sha256HashFor:_gameName.text];
     NSMutableDictionary<NSString *, NSNumber *> *matchScore = @{@"score1" : @0, @"score2" : @0};
-    [[[[[self.ref child:@"Users"]child:_userID] child:@"matches"] child:identifier] setValue:matchScore withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-        if (error) {
-            NSLog(@"Data could not be saved: %@", error);
-            UIAlertController *alertController = [[UIAlertController alloc] init];
-            alertController.title = @"Error";
-            alertController.message = [error description];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
-        } else {
-            NSLog(@"Data saved successfully.");
-            
-        }
-    }];
+    
     NSString *friendID = self.friendList[[_dropdownListOpponent selectedRowInComponent:0]][@"uid"];
     NSString *friendName = self.friendList[[_dropdownListOpponent selectedRowInComponent:0]][@"name"];
-    [[[[[self.ref child:@"Users"]child:friendID] child:@"matches"] child:identifier] setValue:matchScore withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-        if (error) {
-            NSLog(@"Data could not be saved: %@", error);
-            UIAlertController *alertController = [[UIAlertController alloc] init];
-            alertController.title = @"Error";
-            alertController.message = [error description];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
-        } else {
-            NSLog(@"Data saved successfully.");
-        }
-    }];
-    NSMutableDictionary<NSString *, NSObject *> *data = @{@"matchID" : identifier, @"name" : _gameName.text, @"played" : @false, @"player1ID" : _userID, @"player1Name" : _username, @"player2ID" : friendID, @"player2Name" : friendName, @"score1" : @0, @"score2" : @0};
+    
+    NSMutableDictionary<NSString *, NSObject *> *data = @{@"matchID" : identifier, @"name" : _gameName.text, @"played" : @NO, @"player1ID" : _userID, @"player1Name" : _username, @"player2ID" : friendID, @"player2Name" : friendName, @"score1" : @0, @"score2" : @0};
     [[[[[self.ref child:@"Users"]child:_userID] child:@"games"] child:identifier] setValue:data withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         if (error) {
             NSLog(@"Data could not be saved: %@", error);

@@ -14,7 +14,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
-
+@property (strong, nonatomic) FIRUser *user;
 @end
 
 @implementation ViewController
@@ -26,6 +26,7 @@
     // Optional: Place the button in the center of your view.
     loginButton.center = self.view.center;
     loginButton.delegate = self;
+    loginButton.readPermissions = @[@"public_profile", @"email"];
     [self.view addSubview:loginButton];
     if ([FBSDKAccessToken currentAccessToken]) {
         [self performSegueWithIdentifier:@"LoginSucceed" sender:self];
@@ -89,12 +90,23 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                                                               NSError * _Nullable error) {
                                                      if (error) {
                                                          // ...
+                                                         NSLog(error.localizedDescription);
                                                          return;
                                                      }
                                                      // User successfully signed in. Get user data from the FIRUser object
                                                      if (authResult == nil) { return; }
-                                                     FIRUser *user = authResult.user;
-                                                     // ...
+                                                     _user = authResult.user;
+                                                     FIRAdditionalUserInfo *info = authResult.additionalUserInfo;
+                                                     if (info.isNewUser) {
+                                                         [FBSDKProfile loadCurrentProfileWithCompletion:^(FBSDKProfile *profile, NSError *error) {
+                                                             if (profile) {
+                                                                 NSDictionary *userInfo = @{@"name" : profile.name, @"email" : _user.email, @"uid" : _user.uid, @"num_wins":@0};
+                                                                 [[[[[FIRDatabase database] reference] child:@"Users"] child:authResult.user.uid] setValue:userInfo];
+                                                                 
+                                                             }
+                                                         }];
+                                                     }
+                                                     [self performSegueWithIdentifier:@"LoginSucceed" sender:self];
                                                  }];
     } else {
         NSLog(error.localizedDescription);

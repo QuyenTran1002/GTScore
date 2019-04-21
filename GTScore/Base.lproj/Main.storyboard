@@ -741,7 +741,6 @@
                                 </state>
                                 <connections>
                                     <action selector="reportScore:" destination="q0b-dO-8iG" eventType="touchUpInside" id="Zzx-Ek-UdJ"/>
-                                    <segue destination="TDH-ks-Ehl" kind="show" id="Psl-5i-Yed"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r0f-E1-qg7">
@@ -928,7 +927,4 @@
         <image name="logo" width="536" height="536"/>
         <image name="ongoing_match" width="56.25" height="56.25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="CpG-Mc-VIg"/>
-    </inferredMetricsTieBreakers>
 </document>
